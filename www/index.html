@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href='//fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="MyApp">
+
+<ion-pane>
+        <div  ng-controller="AppCtrl" class="sample tabsdemoDynamicTabs" layout="column">
+            <md-content class="md-padding" style="padding: 0;">
+                <md-tabs md-selected="selectedIndex" md-border-bottom="" md-autoselect=""
+                         ng-click="saveTab(selectedIndex)"
+                         class="md-default"
+                         md-dynamic-height>
+                    <md-tab   ng-repeat="list in lists track by $index" ng-disabled="tab.disabled" label="{{list.title}}">
+                        <div class="demo-tab tab{{$index%4}}" style="padding: 0px; text-align: center;">
+
+
+                            <md-card style="margin: 8px 8px -6px 8px;">
+
+                                <md-content
+                                        style="padding: 10px 15px 0 15px"
+                                        layout-padding>
+
+                                    <form ng-submit="addItem($index)">
+
+                                        <div layout>
+
+                                            <md-input-container flex>
+                                                <label>New item...</label>
+                                                <input type="text" ng-model="inputItem[$index]">
+                                            </md-input-container>
+
+                                            <md-button
+                                                    class="md-raised md-primary"
+                                                    ng-disabled="!inputItem[$index]"
+                                                    type="submit"
+                                                    style="width:20%; height: 45px; margin: 5px 0 10px 0; margin-left:10px">
+                                                add
+                                            </md-button>
+
+                                        </div>
+
+                                        <md-input-container
+                                                style="padding-bottom:20px;"
+                                                flex>
+                                            <label>Live search...</label>
+                                            <input type="text" ng-model="myFilter.name">
+                                        </md-input-container>
+
+                                    </form>
+                                </md-content>
+                                <md-content id="listcontent" layout-padding
+                                            style="padding: 0 15px 0 15px">
+                                    <!-- <div ng-repeat="item in list | filter:myFilter track by $index" class="listItem"> !-->
+                                    <ul
+                                            style="list-style-type:none; padding: 0; margin: 0"
+                                            dnd-list="list.items" ng-mouseup="updateCompleted()">
+                                        <!-- track by $index  !-->
+
+                                        <li
+                                                ng-repeat="item in list.items | filter:myFilter"
+                                                ng-click=""
+                                                dnd-draggable="item"
+                                                dnd-moved="list.items.splice($index, 1); updateCompleted()"
+                                                dnd-effect-allowed="move"
+                                                dnd-selected="models.selected = item"
+                                                ng-class="{'selected': models.selected === item}">
+
+                                            <div layout>
+                                                <md-button
+                                                        md-no-ink
+                                                        class="delete-button md-icon-button"
+                                                        aria-label="More"
+                                                        ng-click="deleteItem($parent.$index, $index)"
+                                                        style="font-size:10pt; color: crimson !important; opacity: .8; font-weight: bold">
+                                                    &#x2715
+                                                </md-button>
+
+                                                <md-button
+                                                        md-no-ink class="listItem"
+                                                        ng-class="{strike: item.completed, clean: !item.completed}"
+                                                        ng-click="item.completed=!item.completed;  updateCompleted()"
+                                                        flex>{{ item.name }}
+                                                </md-button>
+
+                                                <md-checkbox
+                                                        ng-model="item.completed"
+                                                        class="check"
+                                                        ng-click="updateCompleted()"
+                                                        aria-label="checkbox">
+                                                </md-checkbox>
+
+                                            </div>
+
+                                        </li>
+
+                                    </ul>
+
+                                </md-content>
+
+                                <div
+                                        class="md-actions"
+                                        layout="row"
+                                        layout-align="center"
+                                        style="padding:10px 24px; width:100%">
+
+                                    <span flex></span>
+
+                                    <md-button
+                                            class="md-primary"
+                                            ng-click="clear($index)">clear completed
+                                    </md-button>
+
+                                    <md-button
+                                            class="md-primary"
+                                            ng-click="removeTab(list)"
+                                            ng-disabled="lists.length <= 1">Delete List
+                                    </md-button>
+
+                                </div>
+
+                            </md-card>
+
+
+                            <br>
+
+                        </div>
+                    </md-tab>
+                </md-tabs>
+            </md-content>
+
+            <form ng-submit="addTab()" layout="column" class="md-padding add-list-form" style="padding-top: 0;">
+                <div layout="row" layout-sm="column">
+                    <div flex="" style="position: relative;">
+
+                    </div>
+                    <md-input-container>
+                        <label for="label">New list title...</label>
+                        <input type="text" id="label" ng-model="tTitle">
+                    </md-input-container>
+
+                    <md-button class="add-tab md-primary md-raised" ng-disabled="!tTitle" type="submit"
+                               style="margin-right: 0;">Add List
+                    </md-button>
+                </div>
+            </form>
+            <md-button
+                    class="md-fab md-primary md-fab-bottom-left"
+                    ng-click="showAlert($event)">INFO
+            </md-button>
+        </div>
+
+
+
+</ion-pane>
+</body>
+</html>

@@ -1,0 +1,145 @@
+.tabsdemoDynamicTabs md-content {
+    background-color: transparent !important;
+
+}
+
+.tabsdemoDynamicTabs md-content md-tabs {
+    border: none;
+    padding: 0px;
+}
+
+.tabsdemoDynamicTabs md-content md-tabs md-tab-content {
+    background: #f6f6f6;
+}
+
+.tabsdemoDynamicTabs md-content md-tabs md-tabs-canvas {
+    background: #9C27B0;
+}
+
+
+.tabsdemoDynamicTabs md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+    color: #ddd !important;
+}
+
+.tabsdemoDynamicTabs md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active, md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active md-icon, md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active md-icon, md-tabs.md-default-theme.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-focused, md-tabs.md-default-theme.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-focused md-icon {
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+.tabsdemoDynamicTabs md-tabs .md-tab[disabled], md-tabs .md-tab[disabled] md-icon {
+    color: #000 !important;
+}
+
+.tabsdemoDynamicTabs md-content h1:first-child {
+    margin-top: 0;
+}
+
+.tabsdemoDynamicTabs md-input-container {
+    padding-bottom: 0;
+}
+
+.tabsdemoDynamicTabs .remove-tab {
+    margin-bottom: 40px;
+}
+
+.tabsdemoDynamicTabs .demo-tab > div > div {
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.tabsdemoDynamicTabs .edit-form input {
+    width: 100%;
+}
+
+.tabsdemoDynamicTabs md-tabs {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.tabsdemoDynamicTabs md-tab[disabled] {
+    opacity: 0.5;
+}
+
+.tabsdemoDynamicTabs label {
+    text-align: left;
+}
+
+.tabsdemoDynamicTabs .long > input {
+    width: 264px;
+}
+
+.tabsdemoDynamicTabs .md-button.add-tab {
+    transform: translateY(5px);
+}
+
+.clean {
+    text-align: left !important;
+    position: relative;
+    text-overflow: ellipsis;
+}
+
+.clean:hover {
+    background: none !important;
+    color: black;
+}
+
+.strike {
+    text-decoration: line-through !important;
+    -webkit-transition: linear all .5s;
+    transition: linear all .5s;
+    text-align: left;
+    position: relative;
+    text-overflow: ellipsis;
+}
+
+.strike:hover {
+    background: none !important;
+    color: black;
+    text-decoration: line-through;
+
+}
+
+.check {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px
+}
+
+ul[dnd-list], ul[dnd-list] > li {
+    position: relative;
+}
+
+ul[dnd-list] .dndDraggingSource {
+    opacity: .5;
+}
+
+md-dialog md-dialog-content {
+    padding: 24px 24px 0 24px !important;
+    line-height: 20pt !important;
+}
+
+.md-button.md-icon-button {
+    margin: 0 0px;
+    height: 25px;
+    min-width: 0;
+    line-height: 48px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.md-button.md-fab.md-fab-bottom-left {
+    bottom: 5px;
+    left: 5px;
+    position: fixed;
+}
+
+.add-list-form {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+*:focus {
+    outline: none;
+
+}
+
